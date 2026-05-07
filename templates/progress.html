@@ -159,41 +159,43 @@
       <div class="reward-card-title">Rango Especial</div>
       <div class="mt-2 text-sm text-gray-200 font-semibold">
         {% if special_rank %}
-          <span class="reward-chip"><i class="ph ph-crown text-xs"></i>{{ special_rank }}</span>
+          <span class="reward-chip reward-chip--gold"><i class="ph ph-crown text-xs"></i>{{ special_rank }}</span>
         {% else %}
           <span class="text-gray-500">Completa todos los labs para desbloquearlo</span>
         {% endif %}
       </div>
     </div>
-    <div class="reward-card">
+    <div class="reward-card {% if certificate %}reward-card--gold{% endif %}">
       <div class="reward-card-title">Certificado</div>
       <div class="mt-2 text-sm text-gray-300">
         {% if certificate %}
-          <div class="text-xs text-gray-400 mb-2">Código: <span class="font-mono text-gray-200">{{ certificate.cert_code }}</span></div>
-          <div class="flex gap-2 flex-wrap">
-            <a href="/progress/certificate" class="reward-chip"><i class="ph ph-download-simple text-xs"></i>Descargar</a>
-            <a href="/progress/certificate/verify?code={{ certificate.cert_code }}" class="reward-chip"><i class="ph ph-shield-check text-xs"></i>Verificar</a>
+          <div class="flex items-center justify-between gap-3 flex-wrap">
+            <div class="text-xs text-gray-400 min-w-0">Código: <span class="font-mono text-gray-200 break-all">{{ certificate.cert_code }}</span></div>
+            <div class="flex gap-2 flex-wrap sm:justify-end">
+              <a href="/progress/certificate" class="reward-chip reward-chip--gold"><i class="ph ph-download-simple text-xs"></i>Descargar</a>
+              <a href="/progress/certificate/verify?code={{ certificate.cert_code }}" class="reward-chip reward-chip--gold"><i class="ph ph-shield-check text-xs"></i>Verificar</a>
+            </div>
           </div>
         {% else %}
           <span class="text-gray-500">Disponible al 100% de completado</span>
         {% endif %}
       </div>
     </div>
-    <div class="reward-card">
+    <div class="reward-card {% if unlocks.nightmare_unlocked %}reward-card--gold{% endif %}">
       <div class="reward-card-title">Modo Nightmare</div>
       <div class="mt-2 text-sm text-gray-300">
         {% if unlocks.nightmare_unlocked %}
-          <span class="reward-chip"><i class="ph ph-lightning text-xs"></i>Desbloqueado en el selector de dificultad</span>
+          <span class="reward-chip reward-chip--gold"><i class="ph ph-lightning text-xs"></i>Desbloqueado en el selector de dificultad</span>
         {% else %}
           <span class="text-gray-500">Completa todos los labs para desbloquearlo</span>
         {% endif %}
       </div>
     </div>
-    <div class="reward-card">
+    <div class="reward-card {% if unlocks.secret_lab_unlocked %}reward-card--gold{% endif %}">
       <div class="reward-card-title">Lab Secreto Final</div>
       <div class="mt-2 text-sm text-gray-300">
         {% if unlocks.secret_lab_unlocked %}
-          <a href="/labs/final-boss" class="reward-chip"><i class="ph ph-skull text-xs"></i>Abrir Final Boss</a>
+          <a href="/labs/final-boss" class="reward-chip reward-chip--gold"><i class="ph ph-skull text-xs"></i>Abrir Final Boss</a>
         {% else %}
           <span class="text-gray-500">Se desbloquea con el 100% de progreso</span>
         {% endif %}
