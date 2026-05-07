@@ -22,7 +22,7 @@
 - [🎚️ Sistema de Dificultad](#️-sistema-de-dificultad)
 - [🚀 Despliegue](#-despliegue)
 - [🔑 Credenciales de prueba](#-credenciales-de-prueba)
-- [️ Herramientas compatibles](#️-herramientas-compatibles)
+- [🛠️ Herramientas compatibles](#️-herramientas-compatibles)
 - [📁 Estructura del proyecto](#-estructura-del-proyecto)
 - [⚙️ Variables de configuración](#️-variables-de-configuración)
 - [🎓 Uso recomendado](#-uso-recomendado)
