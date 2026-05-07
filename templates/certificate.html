@@ -120,11 +120,11 @@
     }
     .learner .rank {
       margin-top: .5%; font-size: clamp(12px, 1.4vw, 20px);
-      color: #d1fae5; font-weight: 700;
+      color: var(--hl-primary); font-weight: 700;
     }
     .meta {
       display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1%; margin: 1.2% auto 0; width: 86%;
+      gap: 16px; margin: 1.2% auto 0; width: 86%;
     }
     .meta-card--full { grid-column: 1 / -1; }
     .meta-card {
@@ -140,10 +140,11 @@
     .meta-v { font-size: clamp(12px, 1.25vw, 19px); color: #f1f5f9; font-weight: 700; }
     .meta-v.mono { font-family: "Consolas", "Courier New", monospace; }
     .meta-v.cert-code {
-      font-size: clamp(8px, .82vw, 12px);
+      font-size: clamp(9px, 1vw, 15px);
       line-height: 1.25;
-      overflow-wrap: anywhere;
-      word-break: break-word;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       letter-spacing: .01em;
     }
     .footer {
@@ -158,14 +159,12 @@
       font-size: clamp(9px, .82vw, 12px); line-height: 1.4;
     }
     .verify code {
-      display: block; margin-top: 5px;
+      display: inline-block; margin-top: 5px;
       border: 1px solid rgba(59,130,246,.25); background: rgba(59,130,246,.08);
       color: #bfdbfe; font-family: "Consolas", "Courier New", monospace;
       padding: 4px 10px; border-radius: 6px;
       font-size: clamp(8px, .72vw, 10px);
-      white-space: normal;
-      overflow-wrap: anywhere;
-      word-break: break-word;
+      white-space: nowrap;
       line-height: 1.25;
     }
     /* ── Tablet (641 – 1024px) ── */
@@ -183,7 +182,7 @@
       .meta-card--full { grid-column: unset; }
       .meta-card { padding: 14px 16px; } .meta-k { font-size: 10px; }
       .meta-v { font-size: 16px; }
-      .meta-v.cert-code { font-size: 11px; line-height: 1.3; }
+      .meta-v.cert-code { font-size: 11px; line-height: 1.3; white-space: normal; overflow: visible; word-break: break-all; }
       .topbar { flex-wrap: wrap; gap: 10px; margin-top: 24px; }
       .brand-mark { width: clamp(30px, 4vw, 45px); height: clamp(30px, 4vw, 45px); }
       .brand-title { font-size: 20px; } .brand-sub { font-size: 10px; }
@@ -208,7 +207,7 @@
       .meta-card--full { grid-column: unset; }
       .meta-card { padding: 12px 14px; } .meta-k { font-size: 9px; margin-bottom: 4px; }
       .meta-v { font-size: 14px; }
-      .meta-v.cert-code { font-size: 10px; line-height: 1.3; }
+      .meta-v.cert-code { font-size: 10px; line-height: 1.3; white-space: normal; overflow: visible; word-break: break-all; }
       .topbar { margin-top: 24px; }
       .brand-mark { width: clamp(28px, 3.5vw, 42px); height: clamp(28px, 3.5vw, 42px); }
       .footer { flex-direction: column; align-items: flex-start; gap: 10px; }
@@ -241,7 +240,7 @@
                 <span class="brand-sub">Ethical Hacking Labs</span>
               </div>
             </div>
-            <div class="badge">Completion Verified</div>
+            <div class="badge"><i class="ph-fill ph-shield-check" style="margin-right:5px"></i>Completion Verified</div>
           </header>
           <div>
             <div class="title">
@@ -254,10 +253,6 @@
               <div class="rank">{{ rank }}</div>
             </div>
             <div class="meta">
-              <div class="meta-card meta-card--full">
-                <div class="meta-k">Certificate Code</div>
-                <div class="meta-v mono cert-code">{{ cert_code }}</div>
-              </div>
               <div class="meta-card">
                 <div class="meta-k">Issued At</div>
                 <div class="meta-v">{{ issued_at }}</div>
@@ -265,6 +260,10 @@
               <div class="meta-card">
                 <div class="meta-k">Issuer</div>
                 <div class="meta-v">HackLabs Academy</div>
+              </div>
+              <div class="meta-card meta-card--full">
+                <div class="meta-k">Certificate Code</div>
+                <div class="meta-v mono cert-code">{{ cert_code }}</div>
               </div>
             </div>
           </div>
