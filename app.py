@@ -467,6 +467,10 @@ def _certificate_linkedin_post_text(learner, rank, share_url):
     )
 
 
+def _certificate_linkedin_compose_url(post_text):
+    return 'https://www.linkedin.com/feed/?shareActive=true&text=' + _urlquote(post_text, safe='')
+
+
 def _issue_completion_certificate(db, account_username):
     existing = db.execute(
         'SELECT cert_code, issued_at FROM completion_certificates WHERE account_username=?',
@@ -1160,12 +1164,13 @@ def certificate_page():
     certificate_linkedin_share_url = None
     certificate_linkedin_post_text = None
     if cert:
-        certificate_share_url, certificate_linkedin_share_url = _certificate_share_urls(cert['cert_code'])
+        certificate_share_url, _ = _certificate_share_urls(cert['cert_code'])
         certificate_linkedin_post_text = _certificate_linkedin_post_text(
             learner_name or app_user,
             _get_special_rank(app_user) or 'Master of HackLabs',
             certificate_share_url,
         )
+        certificate_linkedin_share_url = _certificate_linkedin_compose_url(certificate_linkedin_post_text)
     return render_template(
         'certificate_page.html',
         labs=labs,
