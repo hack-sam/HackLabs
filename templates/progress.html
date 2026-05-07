@@ -204,7 +204,7 @@
   {% endif %}
 
   <div class="reward-card mb-6" style="border-color:rgba(148,163,184,.35);background:rgba(71,85,105,.16)">
-    <div class="reward-card-title">Validar certificado</div>
+    <div class="reward-card-title" style="color:var(--hl-primary)">Validar certificado</div>
     <div class="mt-2 text-sm text-gray-300 mb-3">
       Verifica codigos de certificado emitidos por HackLabs, incluso si aun no has completado el 100%.
     </div>
@@ -224,30 +224,30 @@
 
     {% if verify_status == 'valid' and verify_cert %}
     <div class="reward-card mt-4" style="border-color:rgba(34,197,94,.5);background:rgba(22,101,52,.25)">
-      <div class="reward-card-title">Certificado valido</div>
+      <div class="reward-card-title" style="color:#4ade80"><i class="ph-fill ph-check-circle text-sm"></i> Certificado valido</div>
       <div class="mt-2 text-sm text-gray-200">Usuario: <span class="font-semibold">{{ verify_cert.account_username }}</span></div>
       <div class="text-sm text-gray-300">Codigo: <span class="font-mono">{{ verify_cert.cert_code }}</span></div>
       <div class="text-sm text-gray-400">Emitido: {{ verify_cert.issued_at }}</div>
     </div>
     {% elif verify_status == 'invalid_format' %}
     <div class="reward-card mt-4" style="border-color:rgba(239,68,68,.55);background:rgba(127,29,29,.28)">
-      <div class="reward-card-title">Certificado no valido</div>
-      <div class="mt-2 text-sm text-gray-200">Formato invalido. Copia el codigo completo del certificado HackLabs.</div>
+      <div class="reward-card-title" style="color:#f87171"><i class="ph-fill ph-warning-circle text-sm"></i> Certificado no valido</div>
+      <div class="mt-2 text-sm" style="color:#fecaca">Formato invalido. Copia el codigo completo del certificado HackLabs.</div>
     </div>
     {% elif verify_status == 'invalid_signature' %}
     <div class="reward-card mt-4" style="border-color:rgba(239,68,68,.55);background:rgba(127,29,29,.28)">
-      <div class="reward-card-title">Certificado no valido</div>
-      <div class="mt-2 text-sm text-gray-200">Codigo no valido: la firma criptografica no corresponde a un certificado emitido por HackLabs.</div>
+      <div class="reward-card-title" style="color:#f87171"><i class="ph-fill ph-warning-circle text-sm"></i> Certificado no valido</div>
+      <div class="mt-2 text-sm" style="color:#fecaca">Codigo no valido: la firma criptografica no corresponde a un certificado emitido por HackLabs.</div>
     </div>
     {% elif verify_status == 'not_found' %}
     <div class="reward-card mt-4" style="border-color:rgba(239,68,68,.55);background:rgba(127,29,29,.28)">
-      <div class="reward-card-title">Certificado no valido</div>
-      <div class="mt-2 text-sm text-gray-200">Codigo legacy no encontrado en esta instancia local de HackLabs.</div>
+      <div class="reward-card-title" style="color:#f87171"><i class="ph-fill ph-warning-circle text-sm"></i> Certificado no valido</div>
+      <div class="mt-2 text-sm" style="color:#fecaca">Codigo legacy no encontrado en esta instancia local de HackLabs.</div>
     </div>
     {% elif verify_status == 'empty' %}
     <div class="reward-card mt-4" style="border-color:rgba(239,68,68,.55);background:rgba(127,29,29,.28)">
-      <div class="reward-card-title">Certificado no valido</div>
-      <div class="mt-2 text-sm text-gray-200">Introduce un codigo para validar.</div>
+      <div class="reward-card-title" style="color:#f87171"><i class="ph-fill ph-warning-circle text-sm"></i> Certificado no valido</div>
+      <div class="mt-2 text-sm" style="color:#fecaca">Introduce un codigo para validar.</div>
     </div>
     {% else %}
     <div class="text-xs text-gray-500 mt-4">
