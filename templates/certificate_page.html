@@ -125,7 +125,7 @@
 
   {% else %}
   <!-- LOCKED: certificate preview + overlay -->
-  <div class="relative rounded-2xl overflow-hidden mb-6" style="border:1px solid rgba(206,255,0,.12)">
+  <div class="relative rounded-2xl overflow-hidden mb-6" style="border:1px solid rgba(206,255,0,.12);max-height:200px">
 
     <!-- Certificate canvas preview (blurred) -->
     <div style="filter:blur(5px) brightness(0.45);pointer-events:none;user-select:none;aspect-ratio:16/9;position:relative;overflow:hidden;
@@ -176,7 +176,7 @@
           <i class="ph-fill ph-lock" style="color:var(--hl-primary);font-size:1.8rem"></i>
         </div>
         <div class="text-white font-bold text-base" data-i18n="cert_locked_title">Certificado bloqueado</div>
-        <div class="text-sm text-gray-300" data-i18n="cert_locked_body">Completa el <span class="font-semibold" style="color:var(--hl-primary)">100% de los laboratorios</span> para desbloquear tu certificado de finalización gratuito.</div>
+        <div class="text-sm text-gray-300"><span data-i18n="cert_locked_pre">Completa el </span><span class="font-semibold" style="color:var(--hl-primary)" data-i18n="cert_locked_highlight">100% de los laboratorios</span><span data-i18n="cert_locked_post"> para desbloquear tu certificado de finalización gratuito.</span></div>
         <div class="mt-1 text-xs text-gray-400">
           <span data-i18n="cert_progress_label">Progreso actual:</span>
           <span class="font-mono font-semibold text-white ml-1">{{ done_count }}/{{ total_labs }} labs</span>
