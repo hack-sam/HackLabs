@@ -139,16 +139,16 @@ Cada lab otorga XP según su nivel de riesgo. Los umbrales de nivel se calculan 
 
 Al completar el **100% de los laboratorios** (Lv.8 Master) se desbloquea automáticamente un **certificado de finalización gratuito** en `/progress/certificate`.
 
-<img width="1759" height="984" alt="hacklabs-cert" src="https://github.com/user-attachments/assets/85663199-edbb-4e58-a3ad-bc9d7ab27763" />
+<img width="1761" height="984" alt="hacklabs-cert" src="https://github.com/user-attachments/assets/c102b329-3dda-4514-b594-40855c0ac6e2" />
 
 - Descargable en **HTML** y **PDF** con export exacto del certificado, sin márgenes añadidos ni deformación
 - Incluye nombre de usuario, rango alcanzado, código único verificable y fecha de emisión
-- El código del certificado puede verificarse en `/progress/certificate/verify` y también desde el bloque **Validar certificado** en `/progress` (aunque no tengas 100% completado)
+- El código del certificado puede verificarse en `/progress/certificate/verify` y desde el bloque **Validar certificado** en `/progress`
 - No requiere pago ni suscripción — se genera al instante
 
 #### Verificación local entre máquinas (offline)
 
-HackLabs emite certificados con **firma criptográfica verificable offline**. Esto permite validar en local un certificado emitido en otra máquina, sin servidor central.
+HackLabs emite certificados con **firma criptográfica verificable offline**. Esto permite validar en local un certificado emitido en otra máquina, sin un servidor central.
 
 - Si la firma del código es válida: el certificado se considera auténtico.
 - Si la firma no coincide: el código es inválido.
