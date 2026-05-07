@@ -698,8 +698,12 @@ def progress_submit_flag():
     submitted_flag = (data.get('flag') or '').strip()
 
     valid_ids = {l['id'] for l in get_lab_list()}
+    valid_ids.add('final_boss')
     if not lab_id or lab_id not in valid_ids:
         return jsonify({'error': 'invalid_lab'}), 400
+
+    if lab_id == 'final_boss' and not _get_user_unlocks(app_user).get('secret_lab_unlocked'):
+        return jsonify({'error': 'forbidden'}), 403
     if not submitted_flag:
         return jsonify({'error': 'empty_flag'}), 400
 
@@ -1156,6 +1160,7 @@ def inject_labs():
         '/ai/leak':         'prompt_leaking',
         '/ai/exfil':        'llm_exfil',
         '/ai/supply_chain': 'ai_supply_chain',
+        '/labs/final-boss': 'final_boss',
     }
     # ...existing code...
     current_lab_id = path_to_lab.get(path, '')
