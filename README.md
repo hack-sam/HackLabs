@@ -1,6 +1,6 @@
 # HackLabs
 
-<img width="3830" height="1922" alt="image" src="https://github.com/user-attachments/assets/8cea9a3d-598e-4c96-8c8d-30c62b9a8138" />
+![Uploading hacklabs-new.jpg…]()
 
 <br>
 <b>Plataforma de entrenamiento en hacking ético</b> — Similar a Mutillidae/DVWA pero con interfaz moderna y guías de explotación. Cubre el <b>OWASP Top 10</b> completo + vulnerabilidades extra avanzadas.
