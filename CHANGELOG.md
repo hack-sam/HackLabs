@@ -11,6 +11,7 @@ All notable changes to this repository are documented in this file.
 - feat(captcha): Implementado oraculo de errores para distinguir CAPTCHA valido con credenciales incorrectas y credenciales validas con CAPTCHA incorrecto.
 - feat(captcha): Dificultades Easy/Medium/Hard con retos matematicos progresivos, nonce en medium/hard y rate-limit aislado por dificultad.
 - fix(captcha): El flujo de errores usa redirect-after-post para que recargar la pagina regenere el CAPTCHA sin repetir mensajes de error.
+- fix(captcha): Mensajes del oraculo corregidos y traducidos en ES/EN.
 - docs(readme): README actualizado con el nuevo lab, total de laboratorios y comportamiento por dificultad.
 
 </details>

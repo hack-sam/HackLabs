@@ -3159,8 +3159,16 @@ def captcha():
 CAPTCHA_FLAG = 'HL{c4ptch4_byp4ss_m4th_0wn3d}'
 CAPTCHA_PASSWORD = 'ax4M]'
 CAPTCHA_CHARSET = 'ax4M]'
-CAPTCHA_ERROR = 'Error: CAPTCHA incorecto!'
-CAPTCHA_CREDENTIAL_ERROR = 'Error: la password debe tener 5 caracteres y el character set a,x,4,M,]'
+CAPTCHA_ERROR_MESSAGES = {
+    'captcha': {
+        'es': 'Error: CAPTCHA incorrecto!',
+        'en': 'Error: CAPTCHA incorrect!',
+    },
+    'credentials': {
+        'es': 'Error: el password debe tener 5 caracteres y el character set a,x,4,M,]',
+        'en': 'Error: the password must have 5 characters and use the character set a,x,4,M,]',
+    },
+}
 
 
 def _captcha_lab():
@@ -3206,7 +3214,7 @@ def _clear_captcha_challenge():
         session.pop(key, None)
 
 
-def _render_captcha_lab(error=None, success=False, flag=None, status=200):
+def _render_captcha_lab(error=None, error_key=None, success=False, flag=None, status=200):
     lab = _captcha_lab()
     difficulty = session.get('difficulty', 'easy')
     question = None
@@ -3223,11 +3231,16 @@ def _render_captcha_lab(error=None, success=False, flag=None, status=200):
         flag=flag,
         captcha_charset=CAPTCHA_CHARSET,
         captcha_password_length=len(CAPTCHA_PASSWORD),
+        captcha_error_messages=CAPTCHA_ERROR_MESSAGES,
+        error_key=error_key,
     ), status
 
 
-def _redirect_captcha_error(error):
-    session['captcha_error'] = error
+def _redirect_captcha_error(error_key=None, error=None):
+    if error_key:
+        session['captcha_error_key'] = error_key
+    if error:
+        session['captcha_error'] = error
     return redirect(url_for('captcha_login'), code=303)
 
 
@@ -3237,7 +3250,10 @@ def captcha_login():
 
     # GET: generate captcha based on difficulty
     if request.method == 'GET':
-        return _render_captcha_lab(error=session.pop('captcha_error', None))
+        return _render_captcha_lab(
+            error=session.pop('captcha_error', None),
+            error_key=session.pop('captcha_error_key', None),
+        )
 
     # POST
     username = request.values.get('username', '')
@@ -3257,7 +3273,7 @@ def captcha_login():
         if len(_bruteforce_attempts[key]) >= max_attempts:
             wait = int(window - (now - _bruteforce_attempts[key][0]))
             error = f'Demasiados intentos. Espera {wait}s.'
-            return _redirect_captcha_error(error)
+            return _redirect_captcha_error(error=error)
         _bruteforce_attempts[key].append(now)
 
     expected_answer = session.get('captcha_answer')
@@ -3272,17 +3288,17 @@ def captcha_login():
         expected = session.get('captcha_nonce')
         if not expected or not posted_nonce or not secrets.compare_digest(posted_nonce, expected):
             _clear_captcha_challenge()
-            return _redirect_captcha_error(CAPTCHA_ERROR)
+            return _redirect_captcha_error('captcha')
 
     try:
         captcha_val = int(captcha_input)
     except ValueError:
         _clear_captcha_challenge()
-        return _redirect_captcha_error(CAPTCHA_ERROR)
+        return _redirect_captcha_error('captcha')
 
     if str(captcha_val) != expected_answer:
         _clear_captcha_challenge()
-        return _redirect_captcha_error(CAPTCHA_ERROR)
+        return _redirect_captcha_error('captcha')
 
     _clear_captcha_challenge()
 
@@ -3290,7 +3306,7 @@ def captcha_login():
         _bruteforce_attempts.pop(f'captcha_{difficulty}_{request.remote_addr}', None)
         return _render_captcha_lab(success=True, flag=CAPTCHA_FLAG)
 
-    return _redirect_captcha_error(CAPTCHA_CREDENTIAL_ERROR)
+    return _redirect_captcha_error('credentials')
 
 # ─────────────────────────────────────────────
 # API: lista de usuarios (para practicar enumeration)

@@ -24,7 +24,13 @@
       <span class="lang-content" data-lang="en" style="display:none">Access portal</span>
     </h2>
 
-    {% if error %}
+    {% if error_key %}
+    <div class="mb-4 alert-error flex items-start gap-2">
+      <i class="ph ph-warning-circle mt-0.5"></i>
+      <span class="lang-content" data-lang="es">{{ captcha_error_messages[error_key]['es'] }}</span>
+      <span class="lang-content" data-lang="en" style="display:none">{{ captcha_error_messages[error_key]['en'] }}</span>
+    </div>
+    {% elif error %}
     <div class="mb-4 alert-error flex items-start gap-2">
       <i class="ph ph-warning-circle mt-0.5"></i>
       <span>{{ error }}</span>
@@ -108,8 +114,8 @@
 
     <h3>Oraculo de errores</h3>
     <ul>
-      <li>CAPTCHA correcto + credenciales incorrectas: <code>Error: la password debe tener 5 caracteres y el character set a,x,4,M,]</code></li>
-      <li>Credenciales correctas + CAPTCHA incorrecto: <code>Error: CAPTCHA incorecto!</code></li>
+      <li>CAPTCHA correcto + credenciales incorrectas: <code>Error: el password debe tener 5 caracteres y el character set a,x,4,M,]</code></li>
+      <li>Credenciales correctas + CAPTCHA incorrecto: <code>Error: CAPTCHA incorrecto!</code></li>
     </ul>
 
     <h3>Pasos</h3>
@@ -203,8 +209,8 @@ for candidate in itertools.product(CHARSET, repeat=LENGTH):
 
     <h3>Error oracle</h3>
     <ul>
-      <li>Correct CAPTCHA + bad credentials: <code>Error: la password debe tener 5 caracteres y el character set a,x,4,M,]</code></li>
-      <li>Correct credentials + bad CAPTCHA: <code>Error: CAPTCHA incorecto!</code></li>
+      <li>Correct CAPTCHA + bad credentials: <code>Error: the password must have 5 characters and use the character set a,x,4,M,]</code></li>
+      <li>Correct credentials + bad CAPTCHA: <code>Error: CAPTCHA incorrect!</code></li>
     </ul>
 
     <h3>Steps</h3>

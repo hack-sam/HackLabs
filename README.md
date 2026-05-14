@@ -474,8 +474,8 @@ Flag objetivo: `HL{jw7_m4n1pu14710n_4dm1n_0wn3d}`
 | Hard | Expresion de tres terminos + nonce de un solo uso + rate-limit estricto |
 
 Errores clave del lab:
-- CAPTCHA correcto + credenciales incorrectas: `Error: la password debe tener 5 caracteres y el character set a,x,4,M,]`
-- Credenciales correctas + CAPTCHA incorrecto: `Error: CAPTCHA incorecto!`
+- CAPTCHA correcto + credenciales incorrectas: `Error: el password debe tener 5 caracteres y el character set a,x,4,M,]`
+- Credenciales correctas + CAPTCHA incorrecto: `Error: CAPTCHA incorrecto!`
 
 </details>
 
