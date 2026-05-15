@@ -4,6 +4,7 @@ All notable changes to this repository are documented in this file.
 
 ## 2026-05-15
 
+- fix(captcha): La descripcion del lab se oculta tras el login correcto para priorizar el panel bancario autenticado.
 - fix(ui): En tablet el boton Hacking Academy conserva texto, en mobile queda como icono y los controles icon-only se centran con tamano fijo.
 - feat(captcha): El login del lab ahora simula una banca online con datos financieros sensibles y la flag debajo del panel autenticado.
 - fix(captcha): El script de bruteforce resalta en verde el password valido y deja de imprimir la flag.

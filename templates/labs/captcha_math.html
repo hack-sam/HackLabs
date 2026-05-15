@@ -4,6 +4,7 @@
 <div class="p-6 max-w-3xl mx-auto">
   {% include '_lab_header.html' %}
 
+  {% if not success %}
   <div class="hl-card mb-4">
     <div class="lab-description">
       <div class="lang-content" data-lang="es">
@@ -17,6 +18,7 @@
       </div>
     </div>
   </div>
+  {% endif %}
 
   <div class="hl-card mb-4">
     <h2 class="text-sm font-semibold mb-4" style="color:var(--hl-primary)">
