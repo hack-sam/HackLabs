@@ -195,6 +195,14 @@ main { margin-left: var(--sidebar-width); transition: margin-left 0.22s ease; }
   min-height: 34px;
   white-space: nowrap;
 }
+.hl-header-action i,
+.hl-login-link i,
+#gh-star-btn i,
+#lang-btn i,
+#difficulty-btn i,
+#account-menu-wrap > button i {
+  flex-shrink: 0;
+}
 
 @media (max-width: 1023.98px) {
   .hl-topbar {
@@ -208,17 +216,18 @@ main { margin-left: var(--sidebar-width); transition: margin-left 0.22s ease; }
   .hl-nav-actions {
     gap: 0.35rem;
   }
-  .hl-header-action,
   #gh-stars,
   #lang-btn,
   #difficulty-btn,
   #account-menu-wrap > button,
   .hl-login-link {
+    width: 34px;
+    height: 34px;
     min-width: 34px;
-    min-height: 34px;
     justify-content: center;
+    align-items: center;
+    padding: 0 !important;
   }
-  .hl-header-action,
   #gh-stars {
     padding-left: 0;
     padding-right: 0;
@@ -229,17 +238,33 @@ main { margin-left: var(--sidebar-width); transition: margin-left 0.22s ease; }
   }
   #gh-star-btn {
     width: 100%;
+    height: 100%;
     justify-content: center;
+    align-items: center;
     gap: 0;
   }
   #gh-star-count,
   #lang-selected {
     display: none !important;
   }
+  #difficulty-btn .diff-dot-inline {
+    display: none;
+  }
   #lang-btn .ph-caret-down,
   #difficulty-btn .ph-caret-down,
   #account-menu-wrap > button .ph-caret-down {
     display: none;
+  }
+}
+
+@media (max-width: 639.98px) {
+  .hl-header-action {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    padding: 0 !important;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -254,9 +279,6 @@ main { margin-left: var(--sidebar-width); transition: margin-left 0.22s ease; }
   }
   .hl-nav-actions {
     gap: 0.25rem;
-  }
-  #difficulty-btn .diff-dot-inline {
-    display: none;
   }
 }
 
