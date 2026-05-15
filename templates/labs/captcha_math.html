@@ -7,12 +7,12 @@
   <div class="hl-card mb-4">
     <div class="lab-description">
       <div class="lang-content" data-lang="es">
-        <p class="text-sm text-gray-600 dark:text-gray-400">Este laboratorio simula un formulario de autenticaci&oacute;n protegido por un CAPTCHA matem&aacute;tico. El objetivo es analizar el flujo de login y recuperar el acceso como admin.</p>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Este laboratorio simula un login bancario protegido por un CAPTCHA matem&aacute;tico. El objetivo es analizar el flujo de autenticaci&oacute;n, automatizar la resoluci&oacute;n del CAPTCHA y recuperar el acceso como admin para revisar datos sensibles simulados.</p>
       </div>
       <div class="lang-content" data-lang="en" style="display:none">
         <p class="text-sm text-gray-600 dark:text-gray-400">
-          This lab simulates an authentication form protected by a CAPTCHA inside a controlled environment.
-          The goal is to analyze the login flow and recover access as <code>admin</code>.
+          This lab simulates an online banking login protected by a math CAPTCHA inside a controlled environment.
+          The goal is to analyze the authentication flow, automate CAPTCHA solving and recover access as <code>admin</code> to review simulated sensitive data.
         </p>
       </div>
     </div>
@@ -20,8 +20,8 @@
 
   <div class="hl-card mb-4">
     <h2 class="text-sm font-semibold mb-4" style="color:var(--hl-primary)">
-      <span class="lang-content" data-lang="es">Portal de acceso</span>
-      <span class="lang-content" data-lang="en" style="display:none">Access portal</span>
+      <span class="lang-content" data-lang="es">Banca online</span>
+      <span class="lang-content" data-lang="en" style="display:none">Online banking</span>
     </h2>
 
     {% if error_key %}
@@ -39,11 +39,91 @@
 
     {% if success %}
     <div class="mb-4 alert-success">
-      <div class="text-xs font-semibold mb-1">
+      <div class="text-xs font-semibold">
         <span class="lang-content" data-lang="es">Login correcto</span>
         <span class="lang-content" data-lang="en" style="display:none">Login successful</span>
       </div>
-      <code class="text-sm break-all">{{ flag }}</code>
+    </div>
+
+    <div class="space-y-4">
+      <div class="rounded-lg p-4" style="background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08)">
+        <div class="flex items-center justify-between gap-3 mb-4">
+          <div>
+            <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
+              <span class="lang-content" data-lang="es">Cliente premium</span>
+              <span class="lang-content" data-lang="en" style="display:none">Premium client</span>
+            </p>
+            <h3 class="font-display text-xl font-bold text-gray-900 dark:text-white">Admin Root</h3>
+          </div>
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(var(--hl-primary-rgb),.14);color:var(--hl-primary)">
+            <i class="ph ph-bank text-xl"></i>
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-3">
+          <div class="rounded-lg p-3" style="background:#0f0f1a;border:1px solid rgba(255,255,255,.08)">
+            <p class="text-xs text-gray-500 dark:text-gray-400 mb-1">
+              <span class="lang-content" data-lang="es">Saldo disponible</span>
+              <span class="lang-content" data-lang="en" style="display:none">Available balance</span>
+            </p>
+            <p class="font-mono text-lg font-bold" style="color:var(--hl-primary)">1,284,920.44 EUR</p>
+          </div>
+          <div class="rounded-lg p-3" style="background:#0f0f1a;border:1px solid rgba(255,255,255,.08)">
+            <p class="text-xs text-gray-500 dark:text-gray-400 mb-1">IBAN</p>
+            <p class="font-mono text-sm text-gray-100 break-all">ES91 2100 0418 4502 0005 1332</p>
+          </div>
+          <div class="rounded-lg p-3" style="background:#0f0f1a;border:1px solid rgba(255,255,255,.08)">
+            <p class="text-xs text-gray-500 dark:text-gray-400 mb-1">
+              <span class="lang-content" data-lang="es">Tarjeta principal</span>
+              <span class="lang-content" data-lang="en" style="display:none">Primary card</span>
+            </p>
+            <p class="font-mono text-sm text-gray-100">4539 1488 0343 6467</p>
+            <p class="font-mono text-xs text-gray-500 mt-1">Exp 09/29 &middot; CVV 731</p>
+          </div>
+          <div class="rounded-lg p-3" style="background:#0f0f1a;border:1px solid rgba(255,255,255,.08)">
+            <p class="text-xs text-gray-500 dark:text-gray-400 mb-1">
+              <span class="lang-content" data-lang="es">Cuenta de ahorro</span>
+              <span class="lang-content" data-lang="en" style="display:none">Savings account</span>
+            </p>
+            <p class="font-mono text-sm text-gray-100">ES72 0081 1739 0001 2194 4128</p>
+            <p class="font-mono text-xs text-gray-500 mt-1">482,310.90 EUR</p>
+          </div>
+        </div>
+
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead class="text-gray-500 dark:text-gray-400">
+              <tr>
+                <th class="py-2 pr-3 font-semibold">
+                  <span class="lang-content" data-lang="es">Fecha</span>
+                  <span class="lang-content" data-lang="en" style="display:none">Date</span>
+                </th>
+                <th class="py-2 pr-3 font-semibold">
+                  <span class="lang-content" data-lang="es">Concepto</span>
+                  <span class="lang-content" data-lang="en" style="display:none">Description</span>
+                </th>
+                <th class="py-2 text-right font-semibold">
+                  <span class="lang-content" data-lang="es">Importe</span>
+                  <span class="lang-content" data-lang="en" style="display:none">Amount</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="font-mono text-gray-300">
+              <tr class="border-t border-gray-800"><td class="py-2 pr-3">2026-05-14</td><td class="py-2 pr-3">SWIFT HOLDING TRANSFER</td><td class="py-2 text-right" style="color:var(--hl-primary)">+92,400.00</td></tr>
+              <tr class="border-t border-gray-800"><td class="py-2 pr-3">2026-05-12</td><td class="py-2 pr-3">PRIVATE CARD SETTLEMENT</td><td class="py-2 text-right text-red-400">-8,190.35</td></tr>
+              <tr class="border-t border-gray-800"><td class="py-2 pr-3">2026-05-09</td><td class="py-2 pr-3">BROKERAGE PAYOUT</td><td class="py-2 text-right" style="color:var(--hl-primary)">+128,700.00</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="rounded-lg p-4" style="background:rgba(var(--hl-primary-rgb),.08);border:1px solid rgba(var(--hl-primary-rgb),.35)">
+        <div class="text-xs font-semibold mb-1" style="color:var(--hl-primary)">
+          <span class="lang-content" data-lang="es">Flag localizada</span>
+          <span class="lang-content" data-lang="en" style="display:none">Flag found</span>
+        </div>
+        <code class="text-sm break-all">{{ flag }}</code>
+      </div>
     </div>
     {% endif %}
 
@@ -101,8 +181,8 @@
 
       <button type="submit" class="btn-primary w-full justify-center">
         <i class="ph ph-sign-in"></i>
-        <span class="lang-content" data-lang="es">Iniciar sesi&oacute;n</span>
-        <span class="lang-content" data-lang="en" style="display:none">Log in</span>
+        <span class="lang-content" data-lang="es">Acceder a banca</span>
+        <span class="lang-content" data-lang="en" style="display:none">Access banking</span>
       </button>
     </form>
     {% endif %}
@@ -112,7 +192,7 @@
 <div id="resolution-data" class="hidden">
   <div class="lang-content" data-lang="es">
     <h3>Objetivo</h3>
-    <p>Automatizar el login de <code>admin</code> resolviendo un CAPTCHA nuevo en cada intento y recuperar la flag.</p>
+    <p>Automatizar el login bancario de <code>admin</code> resolviendo un CAPTCHA nuevo en cada intento, identificar el password valido y usarlo despues en el formulario para revisar los datos sensibles y localizar la flag.</p>
 
     <h3>Comportamiento por dificultad</h3>
     <ul>
@@ -171,8 +251,9 @@ import requests
 BASE = "{{ target_base }}"
 CAPTCHA_RE = re.compile(r'&lt;span data-captcha-expression&gt;(.*?)&lt;/span&gt;')
 NONCE_RE = re.compile(r'name="captcha_nonce"\s+value="([^"]+)"')
-FLAG_RE = re.compile(r'HL\{[^}]+\}')
 SUCCESS_RE = re.compile(r'alert-success[\s\S]{0,500}(Login correcto|Login successful)')
+GREEN = "\033[92m"
+RESET = "\033[0m"
 
 
 def fetch_challenge(session):
@@ -216,12 +297,11 @@ with open('passwords.txt', 'r', encoding='utf-8') as f:
                 continue
             break
 
-        flag = FLAG_RE.search(visible_html)
-        if flag or SUCCESS_RE.search(visible_html):
-            print("Password valido: " + password)
-            if flag:
-                print(flag.group(0))
+        if SUCCESS_RE.search(visible_html):
+            print(GREEN + "Password valido: " + password + RESET)
             break</code></pre>
+
+    <p>Con el password valido identificado, vuelve al formulario del laboratorio, inicia sesion como <code>admin</code> y revisa el panel bancario para encontrar la flag.</p>
 
     <h3>Mitigacion</h3>
     <p>No confies en retos que el cliente puede leer y resolver trivialmente. Aplica controles del lado servidor: anti-automation por cuenta/IP, caducidad corta, tokens de un solo uso, monitorizacion y un proveedor CAPTCHA resistente a automatizacion.</p>
@@ -232,7 +312,7 @@ with open('passwords.txt', 'r', encoding='utf-8') as f:
 
   <div class="lang-content" data-lang="en" style="display:none">
     <h3>Goal</h3>
-    <p>Automate the <code>admin</code> login by solving a fresh CAPTCHA for every attempt and recover the flag.</p>
+    <p>Automate the <code>admin</code> banking login by solving a fresh CAPTCHA for every attempt, identify the valid password and then use it in the form to review the sensitive data and locate the flag.</p>
 
     <h3>Behavior by difficulty</h3>
     <ul>
@@ -291,8 +371,9 @@ import requests
 BASE = "{{ target_base }}"
 CAPTCHA_RE = re.compile(r'&lt;span data-captcha-expression&gt;(.*?)&lt;/span&gt;')
 NONCE_RE = re.compile(r'name="captcha_nonce"\s+value="([^"]+)"')
-FLAG_RE = re.compile(r'HL\{[^}]+\}')
 SUCCESS_RE = re.compile(r'alert-success[\s\S]{0,500}(Login correcto|Login successful)')
+GREEN = "\033[92m"
+RESET = "\033[0m"
 
 
 def fetch_challenge(session):
@@ -336,12 +417,11 @@ with open('passwords.txt', 'r', encoding='utf-8') as f:
                 continue
             break
 
-        flag = FLAG_RE.search(visible_html)
-        if flag or SUCCESS_RE.search(visible_html):
-            print("Valid password: " + password)
-            if flag:
-                print(flag.group(0))
+        if SUCCESS_RE.search(visible_html):
+            print(GREEN + "Valid password: " + password + RESET)
             break</code></pre>
+
+    <p>After identifying the valid password, go back to the lab form, log in as <code>admin</code> and review the banking dashboard to find the flag.</p>
 
     <h3>Mitigation</h3>
     <p>Do not trust challenges that the client can read and solve trivially. Enforce server-side controls: account/IP automation limits, short expiry, one-use tokens, monitoring and a CAPTCHA provider designed to resist automation.</p>

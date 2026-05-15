@@ -77,7 +77,7 @@
 | Insecure Deserialization | 🔴 Critical | Python `pickle.loads()` → RCE |
 | JWT Manipulation | 🟠 High | `alg=none`, secreto débil (hashcat), algorithm confusion RS256→HS256 |
 | Login Bruteforce | 🟡 Medium | Hydra, Medusa, CrackMapExec |
-| CAPTCHA Bypass | 🟡 Medium | CAPTCHA matemático automatizable, oráculo de errores y bruteforce de credenciales |
+| CAPTCHA Bypass | 🟡 Medium | Login bancario con CAPTCHA matemático automatizable, oráculo de errores y bruteforce de credenciales |
 | OAuth 2.0 Attacks | 🟠 High | `redirect_uri` sin validar → robo de authorization code |
 | Open Redirect | 🟡 Medium | Parámetro URL sin whitelist |
 | Path Traversal / LFI | 🟠 High | `../../etc/passwd`, log poisoning → RCE |
@@ -466,6 +466,8 @@ Flag objetivo: `HL{jw7_m4n1pu14710n_4dm1n_0wn3d}`
 
 <details>
 <summary><strong>CAPTCHA Bypass</strong></summary>
+
+Login bancario protegido por CAPTCHA matematico. Al recuperar acceso como `admin`, el panel muestra datos financieros simulados y la flag aparece solo despues del login correcto.
 
 | Nivel | Comportamiento |
 |-------|---------------|

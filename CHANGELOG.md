@@ -4,6 +4,8 @@ All notable changes to this repository are documented in this file.
 
 ## 2026-05-15
 
+- feat(captcha): El login del lab ahora simula una banca online con datos financieros sensibles y la flag debajo del panel autenticado.
+- fix(captcha): El script de bruteforce resalta en verde el password valido y deja de imprimir la flag.
 - fix(ui): Cabecera de HackLabs ajustada para evitar solapamientos en tablet y mobile, ocultando textos de controles por debajo de `lg`.
 - fix(captcha): Corregida la indentacion del script de bruteforce para que el `break` quede dentro del bucle de passwords.
 
