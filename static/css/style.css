@@ -178,7 +178,7 @@ main { margin-left: var(--sidebar-width); transition: margin-left 0.22s ease; }
 /* Header responsive layout */
 .hl-topbar {
   min-width: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 .hl-brand {
   flex: 1 1 auto;
