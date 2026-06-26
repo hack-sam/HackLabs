@@ -5,6 +5,12 @@
   {% include '_lab_header.html' %}
 
   <div class="hl-card mb-4">
+    <h3 class="text-xs font-semibold uppercase tracking-wider mb-2" style="color:var(--hl-primary)" data-i18n="obj_title">Objetivo</h3>
+    <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="xxe_obj_desc">La API de tickets procesa XML con entidades externas habilitadas. Explota XXE para leer un archivo local del servidor; su contenido (la flag) vuelve en la respuesta JSON.</p>
+    <p class="text-xs text-gray-400 mt-3"><i class="ph ph-flag text-green-500"></i> <strong class="text-green-500" data-i18n="obj_flag_lbl">Flag:</strong> <code>HackLabs{XXE_Ext3rn4l_Ent1ty_Expl01t3d}</code> <span data-i18n="obj_flag_hint">— valídala en la barra lateral.</span></p>
+  </div>
+
+  <div class="hl-card mb-4">
     <div class="flex items-center gap-2 mb-4">
       <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/></svg>
       <h2 class="text-base font-bold text-gray-800 dark:text-white" data-i18n="xxe_form_title">Crear Ticket de Soporte</h2>

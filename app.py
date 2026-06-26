@@ -2870,6 +2870,9 @@ def uploaded_file(filename):
         env['SERVER_ADDR'] = '127.0.0.1'
         env['DOCUMENT_ROOT'] = UPLOAD_FOLDER
         env['HTTP_HOST'] = request.host
+        # Flag del lab: solo es accesible cuando la webshell se ejecuta de verdad (RCE conseguido).
+        # El usuario la recupera volcando el entorno: ?cmd=env  /  ?cmd=printenv+HL_FLAG
+        env['HL_FLAG'] = 'HL{file_upload_webshell_executed}'
         # Propagar headers HTTP como variables de entorno
         for header_name, header_value in request.headers:
             key = 'HTTP_' + header_name.replace('-', '_').upper()
